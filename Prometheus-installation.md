@@ -42,11 +42,12 @@
           - targets: ['localhost:9091']
     
     EOF
+
 #    
-    #
-    systemctl daemon-reload
-    #
     
+    systemctl daemon-reload
+    
+#   
 ### port to listen at 9091 for prometheus.service
     cat <<EOF > /etc/systemd/system/prometheus.service
     
@@ -69,7 +70,8 @@
     WantedBy=multi-user.target
     
     EOF
- #   
+
+#   
     firewall-cmd --add-port=9091/tcp --permanent
     
     firewall-cmd --reload
@@ -80,9 +82,10 @@
     systemctl enable --now prometheus
     systemctl start prometheus
     systemctl status prometheus
-    
-    ## http://<localhost>:9091
-    ## http://<ip-address>:9091
+ 
+#   
+    http://<localhost>:9091
+    http://<ip-address>:9091
 
 
 
