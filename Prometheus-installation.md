@@ -29,7 +29,7 @@
     cp -r $(pwd)/prometheus/consoles $(pwd)/prometheus/console_libraries /etc/prometheus/
     
     chown -R prometheus:prometheus /etc/prometheus/consoles /etc/prometheus/console_libraries
-    
+#    
     cat <<EOF > /etc/prometheus/prometheus.yml
     
     global:
@@ -42,12 +42,12 @@
           - targets: ['localhost:9091']
     
     EOF
-    
+#    
     #
     systemctl daemon-reload
     #
     
-    ### port to listen at 9091 for prometheus.service
+### port to listen at 9091 for prometheus.service
     cat <<EOF > /etc/systemd/system/prometheus.service
     
     [Unit]
@@ -69,7 +69,7 @@
     WantedBy=multi-user.target
     
     EOF
-    
+ #   
     firewall-cmd --add-port=9091/tcp --permanent
     
     firewall-cmd --reload
